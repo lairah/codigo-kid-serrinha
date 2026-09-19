@@ -1,26 +1,60 @@
-@import "tailwindcss";
+/* Camadas do Tailwind + reset mínimo global (tipografia base, foco visível e scroll). */
+/* Nenhum estilo de componente vive aqui: componentes usam apenas classes utilitárias. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: light;
+    /* Anel de foco. O componente Section troca --ck-focus conforme o fundo:
+       um anel roxo sobre seção roxa ficaria invisível. */
+    --ck-focus-em-claro: theme("colors.ck.acao");
+    --ck-focus-em-escuro: theme("colors.ck.amarelo");
+    --ck-focus: var(--ck-focus-em-claro);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  * {
+    min-width: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ck-branco font-corpo text-ck-tinta antialiased;
+  }
+
+  /* Compensa o header sticky ao navegar via âncora. */
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  /* Foco visível padrão do design system: 3px com offset de 3px.
+     A cor vem da seção atual via --ck-focus. */
+  :focus-visible {
+    outline: 3px solid var(--ck-focus, theme("colors.ck.acao"));
+    outline-offset: 3px;
+  }
+
+  img,
+  svg {
+    @apply block max-w-full;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

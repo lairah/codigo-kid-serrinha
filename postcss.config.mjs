@@ -1,6 +1,8 @@
+/** Pipeline PostCSS do projeto: Tailwind CSS v3 + Autoprefixer. */
 const config = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    tailwindcss: {},
+    autoprefixer: {},
   },
 };
 

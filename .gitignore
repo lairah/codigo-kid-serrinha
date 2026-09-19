@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# O exemplo é template, não segredo: ele documenta quais variáveis existem.
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Config local do Claude Code: o launch.json vale compartilhar,
+# as permissões da máquina de cada um não.
+.claude/settings.local.json
