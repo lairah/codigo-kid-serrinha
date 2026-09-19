@@ -25,9 +25,21 @@ const PALAVRAS: string[] = [
   "questionar.",
   "experimentar.",
   "transformar.",
-  "pensar",
-  "resolver",
+  "pensar.",
+  "resolver.",
 ];
+
+/**
+ * A mesma lista, corrida, para quem usa leitor de tela — a máquina de
+ * escrever não tem como ser lida em voz alta.
+ *
+ * Derivada de `PALAVRAS` e não escrita à mão: a versão manual tinha ficado
+ * para trás em "pensar" e "resolver", e quem ouvia a página recebia sete das
+ * nove palavras. O ponto de cada palavra sai aqui, porque numa lista falada
+ * ele viraria nove pausas de frase.
+ */
+const PALAVRAS_FALADAS =
+  PALAVRAS.map((palavra) => palavra.replace(/\.$/, "")).join(", ") + ".";
 
 export function Hero() {
   const reduzirMovimento = usePrefersReducedMotion();
@@ -87,10 +99,7 @@ export function Hero() {
 
           {/* A palavra troca sozinha: leitores de tela recebem a lista completa. */}
           <span className="mt-2 block text-ck-acao">
-            <span className="sr-only">
-              criar, imaginar, descobrir, inovar, questionar, experimentar,
-              transformar.
-            </span>
+            <span className="sr-only">{PALAVRAS_FALADAS}</span>
             <span aria-hidden="true">
               {reduzirMovimento ? (
                 PALAVRAS[0]
