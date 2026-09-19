@@ -33,7 +33,7 @@ export const ESCOLA = {
 
   /** Uma linha, para o bloco de marca do rodapé. */
   descritor:
-    "Escola de tecnologia para crianças e adolescentes: programação, robótica e criatividade.",
+    "Escola de tecnologia para crianças e adolescentes: programação, robótica e neurodesenvolvimento.",
 
   /** Linhas do endereço, na ordem em que devem ser exibidas. */
   endereco: [

@@ -127,7 +127,7 @@ export function Matriculas() {
             para 5.01:1, e some abaixo de AA na hora que a foto passa por
             baixo. */}
         <p className="mt-6 max-w-2xl font-corpo text-lg leading-relaxed text-ck-tinta md:text-xl">
-          Na Código Kid, seu filho explora, cria e desenvolve novas habilidades
+          Na Código Kid Serrinha, seu filho explora, cria e desenvolve novas habilidades
           enquanto aprende tecnologia na prática. Agende uma aula experimental e
           descubra essa experiência de perto.
         </p>

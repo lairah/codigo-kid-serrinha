@@ -128,12 +128,14 @@ export function Metodologia() {
         </p>
 
         <h2 className="mt-4 max-w-4xl font-display text-[2rem] font-bold leading-[1.05] tracking-tight text-ck-roxo-profundo sm:text-5xl lg:text-6xl">
-          Muito mais do que aprender tecnologia.
+          Muito mais do que aprender a usar tecnologia.
         </h2>
 
         <p className="mt-6 max-w-2xl font-corpo text-lg leading-relaxed text-ck-tinta-suave md:text-xl">
-          Na Código Kid, cada projeto é uma oportunidade para desenvolver
-          criatividade, autonomia, pensamento crítico e habilidades para a vida.
+          O nosso modelo de educação ensina crianças e famílias a se
+          relacionarem com a tecnologia, tornando esse processo seguro e
+          saudável enquanto a criança desperta criatividade, autonomia e
+          pensamento crítico.
         </p>
       </SectionContainer>
 
@@ -165,7 +167,7 @@ export function Metodologia() {
 
       <SectionContainer className="mt-14 text-center">
         <p className="mx-auto max-w-2xl font-display text-xl font-semibold leading-snug text-ck-roxo-profundo md:text-2xl">
-          É por isso que nossa metodologia vai além da tecnologia.
+          Aqui a tecnologia é ferramenta, não objetivo final.
         </p>
       </SectionContainer>
 

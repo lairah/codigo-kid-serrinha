@@ -22,8 +22,12 @@ const hankenGrotesk = Hanken_Grotesk({
   display: "swap",
 });
 
-const DESCRICAO =
-  "Escola de tecnologia para crianças e adolescentes: programação, robótica e criatividade.";
+/**
+ * Sai do `escola.ts` em vez de ser repetida aqui: este mesmo texto já vivia
+ * em dois lugares e foi preciso editar os dois na revisão de 19/09/2026. Uma
+ * fonte só atende a meta description, o Open Graph e o JSON-LD de uma vez.
+ */
+const DESCRICAO = ESCOLA.descritor;
 
 export const metadata: Metadata = {
   /**

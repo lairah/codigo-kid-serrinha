@@ -335,8 +335,8 @@ export function Cursos() {
           </p>
 
           <p className="mt-6 font-display text-2xl font-bold leading-tight tracking-tight text-ck-amarelo md:text-3xl">
-            O resultado não é um aluno que sabe programar. É um ser humano que
-            sabe pensar.
+            Não é apenas aprender algo novo, mas se tornar capaz de usar o
+            aprendizado para resolver problemas reais.
           </p>
 
           <Button asChild variant="destaque" className="mt-10">

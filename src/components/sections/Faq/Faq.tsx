@@ -40,7 +40,7 @@ const PERGUNTAS: Pergunta[] = [
     pergunta: "A partir de qual idade meu filho(a) pode começar?",
     resposta: [
       p(
-        "Na Código Kid, as atividades são destinadas a crianças a partir dos 04 anos. A proposta é oferecer experiências de aprendizagem adequadas a cada faixa etária, respeitando o desenvolvimento e o ritmo de cada criança.",
+        "Na Código Kid Serrinha, as atividades são destinadas a crianças a partir dos 04 anos. A proposta é oferecer experiências de aprendizagem adequadas a cada faixa etária, respeitando o desenvolvimento e o ritmo de cada criança.",
       ),
     ],
   },
@@ -58,7 +58,7 @@ const PERGUNTAS: Pergunta[] = [
     pergunta: "As matrículas ficam abertas durante todo o ano?",
     resposta: [
       p(
-        "As matrículas podem ser consultadas ao longo do ano, conforme a disponibilidade de vagas nas turmas. Entre em contato com a Código Kid para verificar as opções e encontrar o melhor momento para seu filho(a) começar.",
+        "As matrículas podem ser consultadas ao longo do ano, conforme a disponibilidade de vagas nas turmas. Entre em contato com a Código Kid Serrinha para verificar as opções e encontrar o melhor momento para seu filho(a) começar.",
       ),
     ],
   },
@@ -76,7 +76,7 @@ const PERGUNTAS: Pergunta[] = [
     pergunta: "A escola oferece bolsas ou condições especiais?",
     resposta: [
       p(
-        "Sim! Temos condições especiais para tornar a experiência da Código Kid ainda mais acessível para as famílias:",
+        "Sim! Temos condições especiais para tornar a experiência da Código Kid Serrinha ainda mais acessível para as famílias:",
       ),
       {
         tipo: "lista",
@@ -95,7 +95,7 @@ const PERGUNTAS: Pergunta[] = [
     pergunta: "O que o meu filho(a) vai aprender nas aulas?",
     resposta: [
       p(
-        "Na Código Kid, não trabalhamos com cursos padronizados. E isso é uma escolha pedagógica, não uma limitação.",
+        "Na Código Kid Serrinha, não trabalhamos com cursos padronizados. E isso é uma escolha pedagógica, não uma limitação.",
       ),
       p(
         "Cada criança que se matricula tem acesso a tudo que desenvolvemos: robótica, eletrônica, programação, criação de jogos, oratória e educação financeira. Mas o percurso de cada uma é único.",
