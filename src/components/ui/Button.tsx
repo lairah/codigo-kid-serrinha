@@ -29,6 +29,21 @@ export const buttonVariants = cva(
         /** Para CTA sobre seção escura (roxo / roxo-profundo). */
         invertido:
           "bg-ck-branco text-ck-roxo-profundo hover:bg-ck-amarelo hover:text-ck-roxo-profundo",
+        /**
+         * Contorno sobre fundo escuro, para a opção secundária ao lado de um
+         * `destaque` ou `invertido`.
+         *
+         * `secundario` não serve aqui: ele é roxo #6B2280 sobre roxo-profundo
+         * #3F0F52 e simplesmente some. E `invertido`, sendo branco sólido,
+         * rouba a atenção de quem deveria tê-la.
+         *
+         * Borda a 40% de branco porque foi o que a medição permitiu: 3.45:1
+         * sobre `roxo-profundo`, o primeiro passo que limpa os 3:1 que a WCAG
+         * 1.4.11 exige de limite de componente de interface. 35% dá 2.95 e
+         * reprova. O texto é branco puro, 14.98:1.
+         */
+        "contorno-claro":
+          "border-2 border-ck-branco/40 bg-transparent text-ck-branco hover:bg-ck-branco hover:text-ck-roxo-profundo",
       },
       size: {
         /** Tamanho padrão do design system: 48px de altura, 16px/32px de padding. */
