@@ -58,7 +58,7 @@ const PERGUNTAS: Pergunta[] = [
     pergunta: "As matrículas ficam abertas durante todo o ano?",
     resposta: [
       p(
-        "As matrículas podem ser consultadas ao longo do ano, conforme a disponibilidade de vagas nas turmas. Entre em contato com a Código Kid Serrinha para verificar as opções e encontrar o melhor momento para seu filho(a) começar.",
+        "As matrículas podem ser realizadas ao longo do ano, conforme a disponibilidade de vagas nas turmas. Entre em contato com a Código Kid Serrinha para verificar as opções e encontrar o melhor momento para seu filho(a) começar.",
       ),
     ],
   },
