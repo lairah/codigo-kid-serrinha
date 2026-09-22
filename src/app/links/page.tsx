@@ -14,6 +14,7 @@ import Link from "next/link";
 import { ClipboardList, Download, Globe, Mail, MapPin } from "lucide-react";
 
 import { Logo } from "@/components/layout/Header/Logo";
+import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import {
   IconeFacebook,
@@ -196,9 +197,21 @@ export default function PaginaDeLinks() {
   const redes = redesDisponiveis();
 
   return (
-    // `min-h-dvh` e não `min-h-screen`: no celular a barra do navegador entra
-    // e sai, e `100vh` ignora isso — a página ficaria mais alta que a tela.
-    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-ck-roxo-profundo px-5 py-10 sm:py-14">
+    /* `Section` com `variant="noite"` em vez de cor aplicada na mão: é o
+       mesmo degradê da seção de Cursos, do roxo-profundo à cor noite, e vem
+       com o que eu tinha deixado passar — a variante escura também troca o
+       `--ck-focus` para amarelo. Sem isso a página herdava o anel de foco
+       claro, roxo #6B2280 sobre roxo #3F0F52: 1.55:1, invisível para quem
+       navega por teclado. Com a variante, 9.39:1 no topo e 11.82:1 na base.
+
+       `min-h-dvh` e não `min-h-screen`: no celular a barra do navegador entra
+       e sai, e `100vh` ignora isso — a página ficaria mais alta que a tela. */
+    <Section
+      as="main"
+      variant="noite"
+      espacamento="nenhum"
+      className="flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5 py-10 sm:py-14"
+    >
       <PadraoIcones className="text-ck-branco/10" />
 
       <div className="relative z-10 flex w-full max-w-md flex-col items-center">
@@ -270,6 +283,6 @@ export default function PaginaDeLinks() {
           </div>
         ) : null}
       </div>
-    </main>
+    </Section>
   );
 }

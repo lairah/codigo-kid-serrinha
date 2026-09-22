@@ -41,8 +41,14 @@ export const sectionVariants = cva("relative isolate w-full", {
 export interface SectionProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof sectionVariants> {
-  /** Elemento raiz. Padrão `section`. */
-  as?: "section" | "div" | "header" | "footer";
+  /**
+   * Elemento raiz. Padrão `section`.
+   *
+   * `main` entrou para a /links, que é uma página inteira com fundo de
+   * seção: ela precisa do marco de conteúdo principal e, ao mesmo tempo,
+   * do fundo e do token de foco que as variantes escuras trazem.
+   */
+  as?: "section" | "div" | "header" | "footer" | "main";
 }
 
 /**
