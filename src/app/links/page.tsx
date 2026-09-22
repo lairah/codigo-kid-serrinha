@@ -23,7 +23,7 @@ import {
   IconeYoutube,
 } from "@/components/ui/IconesDeMarca";
 import { PadraoIcones } from "@/components/ui/PadraoIcones";
-import { ebookDisponivel } from "@/lib/ebook";
+import { EBOOK, ebookDisponivel } from "@/lib/ebook";
 import {
   ESCOLA,
   MENSAGEM_DE_AGENDAMENTO,
@@ -90,6 +90,21 @@ interface Destino {
   externo?: boolean;
 }
 
+/**
+ * Os glifos dos botões são INLINE, e não itens de flex, e isso é o que faz o
+ * rótulo de duas linhas funcionar.
+ *
+ * Como item de flex o ícone ficava numa coluna e o texto em outra; o texto,
+ * ocupando toda a largura restante e centralizado, deixava um vão à esquerda
+ * da primeira linha e o ícone parecia solto. Inline, ele entra no fluxo do
+ * texto: fica encostado na primeira palavra e a segunda linha passa por baixo
+ * dele. Os botões de uma linha não mudam de aparência.
+ *
+ * O `-0.2em` compensa o desenho do glifo, que tem folga acima e abaixo do
+ * traço — `align-middle` puro deixa o ícone visivelmente alto.
+ */
+const GLIFO = "mr-2 inline h-5 w-5 align-[-0.2em]";
+
 const GLIFOS_DE_REDE: Record<
   MarcaDeRede,
   React.ComponentType<{ className?: string }>
@@ -115,7 +130,7 @@ function destinos(): Destino[] {
       rotulo: "Agendar aula experimental",
       href: whatsapp,
       variante: "destaque",
-      icone: <IconeWhatsapp className="h-5 w-5 shrink-0" />,
+      icone: <IconeWhatsapp className={GLIFO} />,
       externo: true,
     });
   }
@@ -125,7 +140,7 @@ function destinos(): Destino[] {
       rotulo: "Fazer matrícula",
       href: ESCOLA.formularioDeMatricula,
       variante: "invertido",
-      icone: <ClipboardList aria-hidden="true" className="h-5 w-5 shrink-0" />,
+      icone: <ClipboardList aria-hidden="true" className={GLIFO} />,
       externo: true,
     });
   }
@@ -140,7 +155,7 @@ function destinos(): Destino[] {
       rotulo: "Falar no WhatsApp",
       href: linkDoWhatsapp(),
       variante: "contorno-claro",
-      icone: <IconeWhatsapp className="h-5 w-5 shrink-0" />,
+      icone: <IconeWhatsapp className={GLIFO} />,
       externo: true,
     });
   }
@@ -149,18 +164,17 @@ function destinos(): Destino[] {
     rotulo: "Conhecer a escola",
     href: "/",
     variante: "contorno-claro",
-    icone: <Globe aria-hidden="true" className="h-5 w-5 shrink-0" />,
+    icone: <Globe aria-hidden="true" className={GLIFO} />,
   });
 
   if (ebookDisponivel()) {
     lista.push({
-      // Rótulo curto de propósito: o título completo do material vive na
-      // /ebook. Aqui isto é um item de menu, e o nome inteiro quebraria em
-      // duas linhas, descolando o ícone do texto.
-      rotulo: "Manual de Segurança Digital",
+      // O título completo, direto do ebook.ts: rótulo e material dizem o
+      // mesmo nome, e não há segunda fonte para divergir.
+      rotulo: EBOOK.titulo,
       href: "/ebook",
       variante: "contorno-claro",
-      icone: <Download aria-hidden="true" className="h-5 w-5 shrink-0" />,
+      icone: <Download aria-hidden="true" className={GLIFO} />,
     });
   }
 
@@ -169,7 +183,7 @@ function destinos(): Destino[] {
       rotulo: "Como chegar",
       href: ESCOLA.mapa,
       variante: "contorno-claro",
-      icone: <MapPin aria-hidden="true" className="h-5 w-5 shrink-0" />,
+      icone: <MapPin aria-hidden="true" className={GLIFO} />,
       externo: true,
     });
   }
@@ -180,7 +194,7 @@ function destinos(): Destino[] {
       // `mailto:` abre o aplicativo de e-mail, não uma aba — daí não ser externo.
       href: `mailto:${ESCOLA.email}`,
       variante: "contorno-claro",
-      icone: <Mail aria-hidden="true" className="h-5 w-5 shrink-0" />,
+      icone: <Mail aria-hidden="true" className={GLIFO} />,
     });
   }
 
@@ -205,12 +219,18 @@ export default function PaginaDeLinks() {
        navega por teclado. Com a variante, 9.39:1 no topo e 11.82:1 na base.
 
        `min-h-dvh` e não `min-h-screen`: no celular a barra do navegador entra
-       e sai, e `100vh` ignora isso — a página ficaria mais alta que a tela. */
+       e sai, e `100vh` ignora isso — a página ficaria mais alta que a tela.
+
+       O `py-9` no celular é o que faz os sete botões caberem numa tela de
+       812px: 809px de conteúdo, 3px de folga. Medido, não calculado, e é
+       pouco — rótulo novo ou botão a mais faz a página rolar. Isso não
+       quebra nada, só deixa de ser de uma tela, então vale remedir ao mexer
+       na lista em vez de confiar nesta margem. */
     <Section
       as="main"
       variant="noite"
       espacamento="nenhum"
-      className="flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5 py-10 sm:py-14"
+      className="flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5 py-9 sm:py-14"
     >
       <PadraoIcones className="text-ck-branco/10" />
 
@@ -243,16 +263,20 @@ export default function PaginaDeLinks() {
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
                     >
-                      {destino.icone}
-                      {destino.rotulo}
+                      <span>
+                        {destino.icone}
+                        {destino.rotulo}
+                      </span>
                       {destino.externo ? (
                         <span className="sr-only"> (abre em nova aba)</span>
                       ) : null}
                     </a>
                   ) : (
                     <Link href={destino.href}>
-                      {destino.icone}
-                      {destino.rotulo}
+                      <span>
+                        {destino.icone}
+                        {destino.rotulo}
+                      </span>
                     </Link>
                   )}
                 </Button>
