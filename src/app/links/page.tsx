@@ -129,6 +129,21 @@ function destinos(): Destino[] {
     });
   }
 
+  if (whatsapp) {
+    // Note o `linkDoWhatsapp()` SEM argumento: este botão abre a conversa
+    // em branco, enquanto o primeiro já chega com "gostaria de agendar uma
+    // aula experimental" digitado. Quem clica aqui pode querer qualquer
+    // coisa, e adiantar a intenção por essa pessoa seria decidir por ela —
+    // é a mesma regra que o `escola.ts` aplica ao telefone do rodapé.
+    lista.push({
+      rotulo: "Falar no WhatsApp",
+      href: linkDoWhatsapp(),
+      variante: "contorno-claro",
+      icone: <IconeWhatsapp className="h-5 w-5 shrink-0" />,
+      externo: true,
+    });
+  }
+
   lista.push({
     rotulo: "Conhecer a escola",
     href: "/",
@@ -183,7 +198,7 @@ export default function PaginaDeLinks() {
   return (
     // `min-h-dvh` e não `min-h-screen`: no celular a barra do navegador entra
     // e sai, e `100vh` ignora isso — a página ficaria mais alta que a tela.
-    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-ck-roxo-profundo px-5 py-14">
+    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-ck-roxo-profundo px-5 py-10 sm:py-14">
       <PadraoIcones className="text-ck-branco/10" />
 
       <div className="relative z-10 flex w-full max-w-md flex-col items-center">
