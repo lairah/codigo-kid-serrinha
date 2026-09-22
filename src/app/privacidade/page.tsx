@@ -13,6 +13,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Section, SectionContainer } from "@/components/layout/Section";
 import { ESCOLA } from "@/lib/escola";
+import { IMAGEM_DE_COMPARTILHAMENTO } from "@/lib/site";
 
 const DESCRICAO_DA_PAGINA =
   "Como a Código Kid Serrinha trata os dados pessoais de alunos, pais, responsáveis e visitantes do site.";
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
   description: DESCRICAO_DA_PAGINA,
   alternates: { canonical: "/privacidade" },
   openGraph: {
+    // Espalhado porque declarar `openGraph` substitui o do layout inteiro.
+    ...IMAGEM_DE_COMPARTILHAMENTO,
     title: "Política de Privacidade",
     description: DESCRICAO_DA_PAGINA,
     url: "/privacidade",

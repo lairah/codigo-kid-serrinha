@@ -17,6 +17,7 @@ import { PadraoIcones } from "@/components/ui/PadraoIcones";
 import fundoAbertura from "@/images/background-ebook.webp";
 import retratoDoAutor from "@/images/retrato-diego.webp";
 import { EBOOK, ebookDisponivel } from "@/lib/ebook";
+import { IMAGEM_DE_COMPARTILHAMENTO } from "@/lib/site";
 
 /**
  * Converte `*trecho*` em ênfase. O cliente escreve a bio em texto simples, e
@@ -44,6 +45,8 @@ export const metadata: Metadata = {
   description: EBOOK.linhaDeApoio,
   alternates: { canonical: "/ebook" },
   openGraph: {
+    // Espalhado porque declarar `openGraph` substitui o do layout inteiro.
+    ...IMAGEM_DE_COMPARTILHAMENTO,
     title: EBOOK.titulo,
     description: EBOOK.linhaDeApoio,
     url: "/ebook",
