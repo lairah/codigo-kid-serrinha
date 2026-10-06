@@ -26,7 +26,6 @@ import { PadraoIcones } from "@/components/ui/PadraoIcones";
 import { EBOOK, ebookDisponivel } from "@/lib/ebook";
 import {
   ESCOLA,
-  MENSAGEM_DE_AGENDAMENTO,
   type MarcaDeRede,
   linkDoWhatsapp,
   redesDisponiveis,
@@ -38,6 +37,23 @@ import { IMAGEM_DE_COMPARTILHAMENTO } from "@/lib/site";
 
 const DESCRICAO =
   "Todos os canais da Código Kid Serrinha num lugar só: aula experimental, matrícula, materiais e contato.";
+
+/**
+ * As mensagens de WhatsApp daqui são próprias, e NÃO o
+ * `MENSAGEM_DE_AGENDAMENTO` do `escola.ts`, porque dizem "vim pelo
+ * Instagram" — o que só é verdade para quem chega por esta página. A seção de
+ * Matrículas da home continua com a mensagem genérica: lá a pessoa veio da
+ * busca, e afirmar a origem errada seria pior que não afirmar nenhuma.
+ *
+ * De quebra, isso dá atribuição à escola dentro da própria conversa: ao ler
+ * "vim pelo Instagram", quem atende já sabe de onde o contato veio, sem
+ * depender de relatório nenhum.
+ */
+const MENSAGEM_DE_AULA =
+  "Olá! Vim pelo Instagram e quero agendar a aula experimental grátis na Código Kid Serrinha.";
+
+const MENSAGEM_DE_DUVIDA =
+  "Olá! Vim pelo Instagram e tenho uma dúvida sobre a Código Kid Serrinha.";
 
 export const metadata: Metadata = {
   // Sem sufixo: o `title.template` do layout raiz já acrescenta "| Código Kid".
@@ -123,7 +139,7 @@ const GLIFOS_DE_REDE: Record<
  */
 function destinos(): Destino[] {
   const lista: Destino[] = [];
-  const whatsapp = linkDoWhatsapp(MENSAGEM_DE_AGENDAMENTO);
+  const whatsapp = linkDoWhatsapp(MENSAGEM_DE_AULA);
 
   if (whatsapp) {
     lista.push({
@@ -146,14 +162,12 @@ function destinos(): Destino[] {
   }
 
   if (whatsapp) {
-    // Note o `linkDoWhatsapp()` SEM argumento: este botão abre a conversa
-    // em branco, enquanto o primeiro já chega com "gostaria de agendar uma
-    // aula experimental" digitado. Quem clica aqui pode querer qualquer
-    // coisa, e adiantar a intenção por essa pessoa seria decidir por ela —
-    // é a mesma regra que o `escola.ts` aplica ao telefone do rodapé.
+    // Mensagem diferente da do primeiro botão de propósito: lá a pessoa já
+    // declarou que quer agendar, aqui ela só tem uma dúvida. As duas dizem a
+    // origem, o que muda é a intenção.
     lista.push({
       rotulo: "Falar no WhatsApp",
-      href: linkDoWhatsapp(),
+      href: linkDoWhatsapp(MENSAGEM_DE_DUVIDA),
       variante: "contorno-claro",
       icone: <IconeWhatsapp className={GLIFO} />,
       externo: true,
