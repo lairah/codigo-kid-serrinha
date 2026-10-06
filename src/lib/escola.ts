@@ -87,15 +87,13 @@ export const ESCOLA = {
    * Url vazia continua sendo estado válido: `redesDisponiveis()` filtra, e o
    * botão da rede sem perfil não aparece.
    *
-   * A url do Facebook vem na forma `/people/<nome>/<id>/`, que é a que o
-   * próprio Facebook entrega. Fica como está: o id numérico é o que dá
-   * permanência ao link, e o `%C3%B3` é só o "ó" de Código codificado.
+   * O Facebook foi renomeado para `/codigokidserrinha/` e a url antiga,
+   * `/people/Código-Kid-Sisal/61591108104235/`, passou a responder 302 para
+   * ela — verificado em 06/10/2026. Adotamos o endereço novo porque é o
+   * canônico agora, e porque deixa de depender de um redirecionamento.
    *
-   * ATENÇÃO ao "Sisal" na url do Facebook: ele é o slug da PÁGINA lá, não o
-   * nosso copy. O texto do site padronizou em "Código Kid Serrinha"
-   * (18/09/2026), mas esta url fica como está — trocar o slug de um link
-   * externo que funciona não tem o que ganhar. O que dá permanência ao
-   * endereço é o id numérico; o slug é enfeite do lado deles.
+   * Esta url alimenta três lugares de uma vez: os ícones do rodapé, os da
+   * /links e o `sameAs` do JSON-LD da organização.
    */
   redes: [
     {
@@ -105,7 +103,7 @@ export const ESCOLA = {
     },
     {
       nome: "Facebook",
-      url: "https://www.facebook.com/people/C%C3%B3digo-Kid-Sisal/61591108104235/",
+      url: "https://www.facebook.com/codigokidserrinha/",
       marca: "facebook",
     },
     {
